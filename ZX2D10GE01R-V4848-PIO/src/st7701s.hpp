@@ -7,7 +7,7 @@ using namespace craft;
 
 class ST7701S: public Display {
 public:
-    ST7701S();
+    ST7701S(int bufferHeight = 1, int pixelScale = 1);
 
     void drawPixel565(color565 color);
 protected:

@@ -1,6 +1,6 @@
 #include "st7701s.hpp"
 
-ST7701S::ST7701S() {
+ST7701S::ST7701S(int bufferHeight, int pixelScale) {
     bus = new Arduino_SWSPI(
         GFX_NOT_DEFINED /* DC */, 21 /* CS */,
         47 /* SCK */, 41 /* MOSI */, GFX_NOT_DEFINED /* MISO */);
@@ -21,8 +21,8 @@ ST7701S::ST7701S() {
     pinMode(38, OUTPUT);
     digitalWrite(38, HIGH);
 
-    lineBufferHeight = 1;
-    pixelScale = 4;
+    lineBufferHeight = bufferHeight;
+    this->pixelScale = pixelScale;
     pixelFormat = PixelFormat::RGB565;
     width = gfx->width();
     height = gfx->height();

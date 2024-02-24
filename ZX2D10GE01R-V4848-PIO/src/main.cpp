@@ -13,14 +13,13 @@ App* app;
 PlySprite* ninjaSprite;
 
 void setup() {
-    Serial.begin(9600);
-
     // Create a new application
-    app = new App(new ST7701S());
+    app = new App(new ST7701S(1, 4));
 
     // Set background color
     app->stage->backgroundColor(Color8888::SaddleBrown);
 
+    // Add animated ply sprite to center of the stage
     ninjaSprite = PlySprite::Create(&ninja, 0, true);
     app->stage->addChild(ninjaSprite);
     ninjaSprite->origin(OriginType::center, true);
